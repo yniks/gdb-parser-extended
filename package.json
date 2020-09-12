@@ -1,8 +1,9 @@
 {
-  "name": "parse-gdbmi",
+  "name": "parse-gdb",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "js/index.js",
+  "types": "js/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "repl": "node --experimental-repl-await --inspect=0.0.0.0",
