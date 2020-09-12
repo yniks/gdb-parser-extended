@@ -16,7 +16,8 @@
     "@types/node": "^14.10.1",
     "jsdoc": "^3.6.5",
     "typedoc-clarity-theme": "^1.1.0",
-    "@types/pegjs": "^0.10.2"
+    "@types/pegjs": "^0.10.2",
+    "ts-pegjs": "^0.2.7"
   },
   "dependencies": {
   }
