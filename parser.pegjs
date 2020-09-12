@@ -56,7 +56,7 @@ STATEMENT=(((('(' STATEMENT ')')/'()')
     !([\=\,\>\<] EOF)
     )* {return text()}
  /////// PARSE GDMI commands
-GDBMI_RECORD=out_of_band_record / result_record / endOfoutput
+GDBMI_RECORD=out_of_band_record / result_record / endOfoutput / GARBAGE
 GDBMI_OUTPUT =out_of_band_records:( out_of_band_record )*  result_record:result_record end:endOfoutput {return [...out_of_band_records,result_record,end]}
 endOfoutput="(gdb) " nl {return {type:'sequencebreak'}}
 result_record = token:token  "^" result_class:result_class results:( "," result:result {return result} )* nl  {return{token,type:'result_record',class:result_class,...Object.fromEntries(results)}}
@@ -118,3 +118,4 @@ CR_LF='\r\n'
 token =[0-9]* {return text()}
 IDENTIFIER=[a-zA-Z\-]+ {return text()}
 c_string='"' ( !'"' ('\\"'/.))* '"' {return JSON.parse(text())}
+GARBAGE = .* {return{type:"garbage-error",text: text()}}

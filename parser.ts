@@ -324,6 +324,7 @@ function peg$parse(input: string, options?: IParseOptions) {
   const peg$c140 = "\\\"";
   const peg$c141 = peg$literalExpectation("\\\"", false);
   const peg$c142 = function(): any {return JSON.parse(text())};
+  const peg$c143 = function(): any {return{type:"garbage-error",text: text()}};
 
   let peg$currPos = 0;
   let peg$savedPos = 0;
@@ -2049,6 +2050,9 @@ function peg$parse(input: string, options?: IParseOptions) {
       s0 = peg$parseresult_record();
       if (s0 === peg$FAILED) {
         s0 = peg$parseendOfoutput();
+        if (s0 === peg$FAILED) {
+          s0 = peg$parseGARBAGE();
+        }
       }
     }
 
@@ -3190,6 +3194,37 @@ function peg$parse(input: string, options?: IParseOptions) {
       peg$currPos = s0;
       s0 = peg$FAILED;
     }
+
+    return s0;
+  }
+
+  function peg$parseGARBAGE(): any {
+    let s0, s1, s2;
+
+    s0 = peg$currPos;
+    s1 = [];
+    if (input.length > peg$currPos) {
+      s2 = input.charAt(peg$currPos);
+      peg$currPos++;
+    } else {
+      s2 = peg$FAILED;
+      if (peg$silentFails === 0) { peg$fail(peg$c50); }
+    }
+    while (s2 !== peg$FAILED) {
+      s1.push(s2);
+      if (input.length > peg$currPos) {
+        s2 = input.charAt(peg$currPos);
+        peg$currPos++;
+      } else {
+        s2 = peg$FAILED;
+        if (peg$silentFails === 0) { peg$fail(peg$c50); }
+      }
+    }
+    if (s1 !== peg$FAILED) {
+      peg$savedPos = s0;
+      s1 = peg$c143();
+    }
+    s0 = s1;
 
     return s0;
   }
