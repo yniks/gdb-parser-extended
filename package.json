@@ -1,5 +1,5 @@
 {
-  "name": "parse-gdb",
+  "name": "gdb-parser-extended",
   "version": "1.0.0",
   "description": "",
   "main": "js/index.js",
@@ -7,18 +7,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "repl": "node --experimental-repl-await --inspect=0.0.0.0",
-    "docify": "typedoc --out docs . --theme node_modules/typedoc-clarity-theme/bin"
+    "docify": "typedoc --out docs --theme node_modules/typedoc-clarity-theme/bin --exclude parser.ts" 
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/types": "^7.11.5",
     "@types/node": "^14.10.1",
-    "jsdoc": "^3.6.5",
-    "typedoc-clarity-theme": "^1.1.0",
     "@types/pegjs": "^0.10.2",
-    "ts-pegjs": "^0.2.7"
+    "jsdoc": "^3.6.5",
+    "ts-pegjs": "^0.2.7",
+    "typedoc-clarity-theme": "^1.1.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
