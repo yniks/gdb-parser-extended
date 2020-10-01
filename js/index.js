@@ -7,7 +7,7 @@ exports.GdbParser = void 0;
  * @see Parser like interface.
  */
 const Parser = require("./parser");
-class GdbParser {
+class GdbParserClass {
     /**
      * Shall be used to get basic syntatic sanity of the C or c++ code
      * @param input c source code
@@ -41,5 +41,6 @@ class GdbParser {
      */
     parseMIrecord(input) { return Parser.parse(input, { startRule: 'GDBMI_RECORD' }); }
 }
+var GdbParser = new GdbParserClass;
 exports.GdbParser = GdbParser;
 //# sourceMappingURL=index.js.map

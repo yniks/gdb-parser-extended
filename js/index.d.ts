@@ -1,4 +1,4 @@
-export declare class GdbParser {
+declare class GdbParserClass {
     /**
      * Shall be used to get basic syntatic sanity of the C or c++ code
      * @param input c source code
@@ -32,3 +32,5 @@ export declare class GdbParser {
      */
     parseMIrecord(input: string): any;
 }
+declare var GdbParser: GdbParserClass;
+export { GdbParser };
