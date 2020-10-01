@@ -20,23 +20,22 @@ __
 MACROS = macros:MACRO+ {return {macros};}
 MACRO
 	="Defined at " definedat:LOCATION _n 
-    useddat:("  included at " path:LOCATION _n {return path})*
+    usedat:("  included at " path:LOCATION _n {return path})*
     def:MACRODEF _n?
-    {return {definedat,useddat,def}}
+    {return {definedat,usedat,def}}
    
 LOCATION
 	= file:[^:]+ ":" line:[0-9]+ {return {file:file.join(''),line:Number(line.join(''))}}
 
-C_IDENTIFIER
-	= [A-Za-z_][A-Za-z0-9_]* {return text()}
-MACRODEF
-	= "#define" _ id:C_IDENTIFIER _ value:[^\n]* {return {id,value:value.join('')}}
 
+MACRODEF
+	= "#define" [^\n]* {return text()}/
+    "-D" result:[^\n]* {return "#define "+result.join("").split("=").join(" ")}
 _
 	= [ \t]+
 _n
 	= [\n]+
-    
+   
     
  ///////////////scan output ptypes "sad" "sadas"
 PTYPES =  ptypes:PType+  EOF {return ptypes}
