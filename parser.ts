@@ -171,8 +171,8 @@ function peg$parse(input: string, options?: IParseOptions) {
 
   const peg$FAILED: Readonly<{}> = {};
 
-  const peg$startRuleFunctions: { [id: string]: any } = { ANY: peg$parseANY };
-  let peg$startRuleFunction: () => any = peg$parseANY;
+  const peg$startRuleFunctions: { [id: string]: any } = { GDBMI_RECORD: peg$parseGDBMI_RECORD, GDBMI_OUTPUT: peg$parseGDBMI_OUTPUT, TYPES: peg$parseTYPES, MACROS: peg$parseMACROS, PTYPES: peg$parsePTYPES, STATEMENTS: peg$parseSTATEMENTS };
+  let peg$startRuleFunction: () => any = peg$parseGDBMI_RECORD;
 
   const peg$c0 = function (files: any): any { return files; };
   const peg$c1 = "File";

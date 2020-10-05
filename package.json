@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "repl": "node --experimental-repl-await --inspect=0.0.0.0",
     "docify": "typedoc --out docs --theme node_modules/typedoc-clarity-theme/bin --exclude parser.ts",
-    "parse": "pegjs --plugin ./node_modules/ts-pegjs/src/tspegjs.js -o parser.ts parser.pegjs"
+    "parse": "pegjs --allowed-start-rules GDBMI_RECORD,GDBMI_OUTPUT,TYPES,MACROS,PTYPES,STATEMENTS --plugin ./node_modules/ts-pegjs/src/tspegjs.js -o parser.ts parser.pegjs"
   },
   "author": "",
   "license": "ISC",

@@ -106,8 +106,8 @@ exports.SyntaxError = SyntaxError;
 function peg$parse(input, options) {
     options = options !== undefined ? options : {};
     const peg$FAILED = {};
-    const peg$startRuleFunctions = { ANY: peg$parseANY };
-    let peg$startRuleFunction = peg$parseANY;
+    const peg$startRuleFunctions = { GDBMI_RECORD: peg$parseGDBMI_RECORD, GDBMI_OUTPUT: peg$parseGDBMI_OUTPUT, TYPES: peg$parseTYPES, MACROS: peg$parseMACROS, PTYPES: peg$parsePTYPES, STATEMENTS: peg$parseSTATEMENTS };
+    let peg$startRuleFunction = peg$parseGDBMI_RECORD;
     const peg$c0 = function (files) { return files; };
     const peg$c1 = "File";
     const peg$c2 = peg$literalExpectation("File", false);

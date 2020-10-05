@@ -37,7 +37,7 @@ _n
 	= [\n]+
    
     
- ///////////////scan output ptypes "sad" "sadas"
+///////////////scan output ptypes "sad" "sadas"
 PTYPES =  ptypes:PType+  EOF {return ptypes}
 PType= "type = " def:(!(EOF/"type =") val:.    {return val;} )+ {return {Type:def.join('')};}
 EOF=!.
