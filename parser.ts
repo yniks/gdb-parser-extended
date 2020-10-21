@@ -31,7 +31,7 @@ export interface ILiteralExpectation {
   ignoreCase: boolean;
 }
 
-export interface IClassParts extends Array<string | IClassParts> {}
+export interface IClassParts extends Array<string | IClassParts> { }
 
 export interface IClassExpectation {
   type: "class";
@@ -64,13 +64,13 @@ export class SyntaxError extends Error {
     function literalEscape(s: string): string {
       return s
         .replace(/\\/g, "\\\\")
-        .replace(/"/g,  "\\\"")
+        .replace(/"/g, "\\\"")
         .replace(/\0/g, "\\0")
         .replace(/\t/g, "\\t")
         .replace(/\n/g, "\\n")
         .replace(/\r/g, "\\r")
-        .replace(/[\x00-\x0F]/g,            (ch) => "\\x0" + hex(ch) )
-        .replace(/[\x10-\x1F\x7F-\x9F]/g, (ch) => "\\x"  + hex(ch) );
+        .replace(/[\x00-\x0F]/g, (ch) => "\\x0" + hex(ch))
+        .replace(/[\x10-\x1F\x7F-\x9F]/g, (ch) => "\\x" + hex(ch));
     }
 
     function classEscape(s: string): string {
@@ -78,13 +78,13 @@ export class SyntaxError extends Error {
         .replace(/\\/g, "\\\\")
         .replace(/\]/g, "\\]")
         .replace(/\^/g, "\\^")
-        .replace(/-/g,  "\\-")
+        .replace(/-/g, "\\-")
         .replace(/\0/g, "\\0")
         .replace(/\t/g, "\\t")
         .replace(/\n/g, "\\n")
         .replace(/\r/g, "\\r")
-        .replace(/[\x00-\x0F]/g,            (ch) => "\\x0" + hex(ch) )
-        .replace(/[\x10-\x1F\x7F-\x9F]/g, (ch) => "\\x"  + hex(ch) );
+        .replace(/[\x00-\x0F]/g, (ch) => "\\x0" + hex(ch))
+        .replace(/[\x10-\x1F\x7F-\x9F]/g, (ch) => "\\x" + hex(ch));
     }
 
     function describeExpectation(expectation: Expectation) {
@@ -171,59 +171,59 @@ function peg$parse(input: string, options?: IParseOptions) {
 
   const peg$FAILED: Readonly<{}> = {};
 
-  const peg$startRuleFunctions: {[id: string]: any} = { GDBMI_RECORD: peg$parseGDBMI_RECORD, GDBMI_OUTPUT: peg$parseGDBMI_OUTPUT, TYPES: peg$parseTYPES, MACROS: peg$parseMACROS, PTYPES: peg$parsePTYPES, STATEMENTS: peg$parseSTATEMENTS };
+  const peg$startRuleFunctions: { [id: string]: any } = { GDBMI_RECORD: peg$parseGDBMI_RECORD, GDBMI_OUTPUT: peg$parseGDBMI_OUTPUT, TYPES: peg$parseTYPES, MACROS: peg$parseMACROS, PTYPES: peg$parsePTYPES, STATEMENTS: peg$parseSTATEMENTS };
   let peg$startRuleFunction: () => any = peg$parseGDBMI_RECORD;
 
-  const peg$c0 = function(files: any): any {return files;};
+  const peg$c0 = function (files: any): any { return files; };
   const peg$c1 = "File";
   const peg$c2 = peg$literalExpectation("File", false);
   const peg$c3 = /^[ ]/;
   const peg$c4 = peg$classExpectation([" "], false, false);
-  const peg$c5 = function(filename: any, line: any, type: any): any {return {line,type};};
-  const peg$c6 = function(filename: any, lines: any): any { return {filename:filename,defs:lines.filter(item=>item.line)};};
+  const peg$c5 = function (filename: any, line: any, def: any): any { return { line, def }; };
+  const peg$c6 = function (filename: any, lines: any): any { return { filename: filename, defs: lines.filter((item: any) => item.line) }; };
   const peg$c7 = /^[^\n;]/;
   const peg$c8 = peg$classExpectation(["\n", ";"], true, false);
   const peg$c9 = ";";
   const peg$c10 = peg$literalExpectation(";", false);
-  const peg$c11 = function(name: any): any { return name.join("");};
+  const peg$c11 = function (name: any): any { return name.join(""); };
   const peg$c12 = /^[^:]/;
   const peg$c13 = peg$classExpectation([":"], true, false);
   const peg$c14 = ":";
   const peg$c15 = peg$literalExpectation(":", false);
   const peg$c16 = /^[0-9]/;
   const peg$c17 = peg$classExpectation([["0", "9"]], false, false);
-  const peg$c18 = function(line: any): any {return Number(line.join(""))};
+  const peg$c18 = function (line: any): any { return Number(line.join("")) };
   const peg$c19 = /^[\t]/;
   const peg$c20 = peg$classExpectation(["\t"], false, false);
   const peg$c21 = /^[\n]/;
   const peg$c22 = peg$classExpectation(["\n"], false, false);
-  const peg$c23 = function(macros: any): any {return {macros};};
+  const peg$c23 = function (macros: any): any { return { macros }; };
   const peg$c24 = "Defined at ";
   const peg$c25 = peg$literalExpectation("Defined at ", false);
   const peg$c26 = "  included at ";
   const peg$c27 = peg$literalExpectation("  included at ", false);
-  const peg$c28 = function(definedat: any, path: any): any {return path};
-  const peg$c29 = function(definedat: any, usedat: any, def: any): any {return {definedat,usedat,def}};
-  const peg$c30 = function(file: any, line: any): any {return {file:file.join(''),line:Number(line.join(''))}};
+  const peg$c28 = function (definedat: any, path: any): any { return path };
+  const peg$c29 = function (definedat: any, usedat: any, def: any): any { return { definedat, usedat, def } };
+  const peg$c30 = function (file: any, line: any): any { return { file: file.join(''), line: Number(line.join('')) } };
   const peg$c31 = "#define";
   const peg$c32 = peg$literalExpectation("#define", false);
   const peg$c33 = /^[^\n]/;
   const peg$c34 = peg$classExpectation(["\n"], true, false);
-  const peg$c35 = function(): any {return text()};
+  const peg$c35 = function (): any { return text() };
   const peg$c36 = "-D";
   const peg$c37 = peg$literalExpectation("-D", false);
-  const peg$c38 = function(result: any): any {return "#define "+result.join("").split("=").join(" ")};
+  const peg$c38 = function (result: any): any { return "#define " + result.join("").split("=").join(" ") };
   const peg$c39 = /^[ \t]/;
   const peg$c40 = peg$classExpectation([" ", "\t"], false, false);
-  const peg$c41 = function(ptypes: any): any {return ptypes};
+  const peg$c41 = function (ptypes: any): any { return ptypes };
   const peg$c42 = "type = ";
   const peg$c43 = peg$literalExpectation("type = ", false);
   const peg$c44 = "type =";
   const peg$c45 = peg$literalExpectation("type =", false);
   const peg$c46 = peg$anyExpectation();
-  const peg$c47 = function(val: any): any {return val;};
-  const peg$c48 = function(def: any): any {return {def:def.join('')};};
-  const peg$c49 = function(result: any): any { return {type:'checkCStatement',valid:!!result} };
+  const peg$c47 = function (val: any): any { return val; };
+  const peg$c48 = function (def: any): any { return { def: def.join('') }; };
+  const peg$c49 = function (result: any): any { return { type: 'checkCStatement', valid: !!result } };
   const peg$c50 = "(";
   const peg$c51 = peg$literalExpectation("(", false);
   const peg$c52 = ")";
@@ -258,31 +258,31 @@ function peg$parse(input: string, options?: IParseOptions) {
   const peg$c81 = peg$classExpectation(["(", ")", "{", "}", "[", "]", "\"", "'"], true, false);
   const peg$c82 = /^[=,><]/;
   const peg$c83 = peg$classExpectation(["=", ",", ">", "<"], false, false);
-  const peg$c84 = function(out_of_band_records: any, result_record: any, end: any): any {return [...out_of_band_records,result_record,end]};
+  const peg$c84 = function (out_of_band_records: any, result_record: any, end: any): any { return [...out_of_band_records, result_record, end] };
   const peg$c85 = "(gdb) ";
   const peg$c86 = peg$literalExpectation("(gdb) ", false);
-  const peg$c87 = function(): any {return {type:'sequencebreak'}};
+  const peg$c87 = function (): any { return { type: 'sequencebreak' } };
   const peg$c88 = "^";
   const peg$c89 = peg$literalExpectation("^", false);
   const peg$c90 = ",";
   const peg$c91 = peg$literalExpectation(",", false);
-  const peg$c92 = function(token: any, result_class: any, result: any): any {return result};
-  const peg$c93 = function(token: any, result_class: any, results: any): any {return{token,type:'result_record',class:result_class,...Object.fromEntries(results)}};
+  const peg$c92 = function (token: any, result_class: any, result: any): any { return result };
+  const peg$c93 = function (token: any, result_class: any, results: any): any { return { token, type: 'result_record', class: result_class, ...Object.fromEntries(results) } };
   const peg$c94 = "*";
   const peg$c95 = peg$literalExpectation("*", false);
-  const peg$c96 = function(token: any, async_output: any): any {return{token,type:'notify_async_output',...async_output}};
+  const peg$c96 = function (token: any, async_output: any): any { return { token, type: 'notify_async_output', ...async_output } };
   const peg$c97 = "+";
   const peg$c98 = peg$literalExpectation("+", false);
-  const peg$c99 = function(token: any, async_output: any): any {return {token,type:'notify_async_output',...async_output}};
+  const peg$c99 = function (token: any, async_output: any): any { return { token, type: 'notify_async_output', ...async_output } };
   const peg$c100 = "=";
   const peg$c101 = peg$literalExpectation("=", false);
-  const peg$c102 = function(async_class: any, result: any): any {return result};
-  const peg$c103 = function(async_class: any, results: any): any {
-          return {
-          	class:async_class,
-          	results:Object.fromEntries(results)
-          	}
-          };
+  const peg$c102 = function (async_class: any, result: any): any { return result };
+  const peg$c103 = function (async_class: any, results: any): any {
+    return {
+      class: async_class,
+      results: Object.fromEntries(results)
+    }
+  };
   const peg$c104 = "done";
   const peg$c105 = peg$literalExpectation("done", false);
   const peg$c106 = "running";
@@ -293,24 +293,24 @@ function peg$parse(input: string, options?: IParseOptions) {
   const peg$c111 = peg$literalExpectation("error", false);
   const peg$c112 = "exit";
   const peg$c113 = peg$literalExpectation("exit", false);
-  const peg$c114 = function(variable: any, value: any): any {return [variable,value]};
-  const peg$c115 = function(): any {return {}};
-  const peg$c116 = function(result: any, _result: any): any {return _result};
-  const peg$c117 = function(result: any, results: any): any {
-          	return Object.fromEntries([result,...results])
-             };
-  const peg$c118 = function(): any {return []};
-  const peg$c119 = function(value: any, _value: any): any {return _value};
-  const peg$c120 = function(value: any, values: any): any {return [value,...values]};
+  const peg$c114 = function (variable: any, value: any): any { return [variable, value] };
+  const peg$c115 = function (): any { return {} };
+  const peg$c116 = function (result: any, _result: any): any { return _result };
+  const peg$c117 = function (result: any, results: any): any {
+    return Object.fromEntries([result, ...results])
+  };
+  const peg$c118 = function (): any { return [] };
+  const peg$c119 = function (value: any, _value: any): any { return _value };
+  const peg$c120 = function (value: any, values: any): any { return [value, ...values] };
   const peg$c121 = "~";
   const peg$c122 = peg$literalExpectation("~", false);
-  const peg$c123 = function(c_line: any): any {return {type:'console_stream_output',c_line}};
+  const peg$c123 = function (c_line: any): any { return { type: 'console_stream_output', c_line } };
   const peg$c124 = "@";
   const peg$c125 = peg$literalExpectation("@", false);
-  const peg$c126 = function(c_line: any): any {return {type:'target_stream_output',c_line}};
+  const peg$c126 = function (c_line: any): any { return { type: 'target_stream_output', c_line } };
   const peg$c127 = "&";
   const peg$c128 = peg$literalExpectation("&", false);
-  const peg$c129 = function(c_line: any): any {return {type:'log_stream_output',c_line}};
+  const peg$c129 = function (c_line: any): any { return { type: 'log_stream_output', c_line } };
   const peg$c130 = "\n";
   const peg$c131 = peg$literalExpectation("\n", false);
   const peg$c132 = "\r\n";
@@ -319,8 +319,8 @@ function peg$parse(input: string, options?: IParseOptions) {
   const peg$c135 = peg$classExpectation([["a", "z"], ["A", "Z"], "-"], false, false);
   const peg$c136 = "\\\"";
   const peg$c137 = peg$literalExpectation("\\\"", false);
-  const peg$c138 = function(): any {return JSON.parse(text())};
-  const peg$c139 = function(): any {return{type:"garbage-error",text: text()}};
+  const peg$c138 = function (): any { return JSON.parse(text()) };
+  const peg$c139 = function (): any { return { type: "garbage-error", text: text() } };
 
   let peg$currPos = 0;
   let peg$savedPos = 0;

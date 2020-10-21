@@ -2,7 +2,7 @@ ANY=GDBMI_RECORD/GDBMI_OUTPUT/TYPES/MACROS/PTYPES/STATEMENTS
 TYPES= files:(File)+ {return files;}
 File
   = "File" [\ ]+ filename:FileName __
-  lines:(line:lineNumber? blank type:typeName __*	{return {line,type};})*
+  lines:(line:lineNumber? blank def:typeName __*	{return {line,def};})*
   { return {filename:filename,defs:lines.filter(item=>item.line)};}
  
 typeName=name:[^\n;]+ ";"?  { return name.join("");}

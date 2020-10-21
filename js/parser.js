@@ -113,8 +113,8 @@ function peg$parse(input, options) {
     const peg$c2 = peg$literalExpectation("File", false);
     const peg$c3 = /^[ ]/;
     const peg$c4 = peg$classExpectation([" "], false, false);
-    const peg$c5 = function (filename, line, type) { return { line, type }; };
-    const peg$c6 = function (filename, lines) { return { File: filename, types: lines.filter((item) => item.line) }; };
+    const peg$c5 = function (filename, line, def) { return { line, def }; };
+    const peg$c6 = function (filename, lines) { return { filename: filename, defs: lines.filter((item) => item.line) }; };
     const peg$c7 = /^[^\n;]/;
     const peg$c8 = peg$classExpectation(["\n", ";"], true, false);
     const peg$c9 = ";";
