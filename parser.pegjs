@@ -3,7 +3,7 @@ TYPES= files:(File)+ {return files;}
 File
   = "File" [\ ]+ filename:FileName __
   lines:(line:lineNumber? blank type:typeName __*	{return {line,type};})*
-  { return {File:filename,types:lines.filter(item=>item.line)};}
+  { return {filename:filename,defs:lines.filter(item=>item.line)};}
  
 typeName=name:[^\n;]+ ";"?  { return name.join("");}
 FileName
