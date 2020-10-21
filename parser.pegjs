@@ -39,7 +39,7 @@ _n
     
 ///////////////scan output ptypes "sad" "sadas"
 PTYPES =  ptypes:PType+  EOF {return ptypes}
-PType= "type = " def:(!(EOF/"type =") val:.    {return val;} )+ {return {Type:def.join('')};}
+PType= "type = " def:(!(EOF/"type =") val:.    {return val;} )+ {return {def:def.join('')};}
 EOF=!.
 
 /////// PRECHECK CODE FOR VERY SIMPLE SYTAX ERROR

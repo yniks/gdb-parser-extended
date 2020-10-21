@@ -222,7 +222,7 @@ function peg$parse(input: string, options?: IParseOptions) {
   const peg$c45 = peg$literalExpectation("type =", false);
   const peg$c46 = peg$anyExpectation();
   const peg$c47 = function (val: any): any { return val; };
-  const peg$c48 = function (def: any): any { return { Type: def.join('') }; };
+  const peg$c48 = function (def: any): any { return { def: def.join('') }; };
   const peg$c49 = function (result: any): any { return { type: 'checkCStatement', valid: !!result } };
   const peg$c50 = "(";
   const peg$c51 = peg$literalExpectation("(", false);

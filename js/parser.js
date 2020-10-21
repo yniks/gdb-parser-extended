@@ -156,7 +156,7 @@ function peg$parse(input, options) {
     const peg$c45 = peg$literalExpectation("type =", false);
     const peg$c46 = peg$anyExpectation();
     const peg$c47 = function (val) { return val; };
-    const peg$c48 = function (def) { return { Type: def.join('') }; };
+    const peg$c48 = function (def) { return { def: def.join('') }; };
     const peg$c49 = function (result) { return { type: 'checkCStatement', valid: !!result }; };
     const peg$c50 = "(";
     const peg$c51 = peg$literalExpectation("(", false);
